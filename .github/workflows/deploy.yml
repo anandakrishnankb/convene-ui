@@ -63,7 +63,7 @@ jobs:
     needs: build_and_analyze
 
     steps:
-      - name: Set up SSH agent and add private key
+      - name: Set up SSH agent and add private keys
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY1 }}
         run: |
