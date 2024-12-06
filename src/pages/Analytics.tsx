@@ -56,7 +56,7 @@ const events = [
       { name: "Merchandise", value: 1500 },
     ],
     feedbackData: [
-      { name: "Excellent", value: 40 },
+      { name: "Excellent", value: 50 },
       { name: "Good", value: 30 },
     ],
   },
