@@ -45,7 +45,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY_SCP }}
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
-
+          debug: true
+          
       # Step 4: Build the React app
       - name: Upload Docker image tar to server
         uses: appleboy/scp-action@v0.1.3
