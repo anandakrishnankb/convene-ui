@@ -68,6 +68,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY1 }}
+          ssh-passphrase: ${{ secrets.SSH_PASSPHRASE }}
 
       - name: Test SSH Connection
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo 'SSH Connection Established'"
