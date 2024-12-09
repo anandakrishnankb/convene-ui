@@ -63,16 +63,11 @@ jobs:
     needs: build_and_analyze
 
     steps:
-      - name: Set up SSH agent and add private keys
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY1 }}
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "$SSH_PRIVATE_KEY1" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/id_rsa
+      # Use the webfactory/ssh-agent action
+      - name: Start SSH agent and add private key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY1 }}
 
       - name: Test SSH Connection
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo 'SSH Connection Established'"
